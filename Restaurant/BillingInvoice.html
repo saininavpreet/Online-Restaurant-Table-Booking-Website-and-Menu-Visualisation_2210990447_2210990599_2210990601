@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="RestaurantTableBooking.css">
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+    <title>Restaurant Table Booking</title>
+</head>
+<body>
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="#" class="logo">
+        <img src="/Images2/logo.png" height="1000" width="170" alt="Restaurant-logo">
+      </a>
+
+      <nav class="navbar" data-navbar>
+
+        <button class="close-btn" aria-label="close menu" data-nav-toggler>
+          <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+        </button>
+
+        <a href="#" class="logo">
+          <img src="/Images2/logo.png" alt="Restaurant-logo">
+        </a>
+
+        <ul class="navbar-list">
+          <li class="navbar-item">
+            <a href="index.html#home" class="navbar-link hover-underline active">
+              <div class="separator"></div>
+              <span class="span">Home</span>
+            </a>
+          </li>
+          <li class="navbar-item">
+            <a href="index.html#starrating" class="navbar-link hover-underline">
+              <div class="separator"></div>
+              <span class="span">Reviews</span>
+            </a>
+          </li>
+          <li class="navbar-item">
+            <a href="aboutus.html" class="navbar-link hover-underline">
+              <div class="separator"></div>
+              <span class="span">About Us</span>
+            </a>
+          </li>
+          <li class="navbar-item">
+            <a href="OurChefs.html" class="navbar-link hover-underline">
+              <div class="separator"></div>
+              <span class="span">Our Chefs</span>
+            </a>
+          </li>
+          <li class="navbar-item">
+            <a href="#map" class="navbar-link hover-underline">
+              <div class="separator"></div>
+              <span class="span">Find Us</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <a href="#" onclick="showInvoice()">
+        <ion-icon class="bagicon" name="bag-check-outline"></ion-icon>
+      </a>
+
+      <div class="overlay" data-nav-toggler data-overlay></div>
+    </div>
+  </header>
+
+  <br><br><br>
+
+  <section class="section menu" aria-label="menu-label" id="menu">
+    <!-- (Menu code remains unchanged) -->
+  </section>
+
+  <!-- Invoice Section -->
+  <section id="invoice" style="display: none;">
+    <div class="container">
+      <h2>Billing Invoice</h2>
+      <table id="invoiceTable">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Invoice items will be populated here -->
+        </tbody>
+      </table>
+      <p id="totalPrice"></p>
+    </div>
+  </section>
+
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+    // JavaScript to handle Add to Cart functionality
+    let cart = [];
+
+    function addToCart(itemName, itemPrice) {
+      const item = { name: itemName, price: itemPrice };
+      cart.push(item);
+      alert(itemName + ' has been added to your cart!');
+      updateCartDisplay();
+    }
+
+    function showInvoice() {
+      const invoiceSection = document.getElementById('invoice');
+      const invoiceTableBody = document.getElementById('invoiceTable').querySelector('tbody');
+      invoiceTableBody.innerHTML = ''; // Clear previous invoice items
+
+      let total = 0;
+      cart.forEach(item => {
+        const row = document.createElement('tr');
+        const nameCell = document.createElement('td');
+        nameCell.textContent = item.name;
+        const priceCell = document.createElement('td');
+        priceCell.textContent = item.price + ' Rs';
+        row.appendChild(nameCell);
+        row.appendChild(priceCell);
+        invoiceTableBody.appendChild(row);
+        total += item.price;
+      });
+
+      document.getElementById('totalPrice').textContent = 'Total: ' + total + ' Rs';
+      invoiceSection.style.display = 'block';
+    }
+
+    function updateCartDisplay() {
+      console.log('Cart updated:', cart);
+    }
+
+    console.log('Cart:', cart);
+  </script>
+</body>
+</html>

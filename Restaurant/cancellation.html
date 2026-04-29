@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurant Table Booking</title>
+<style>
+  /* Styles for demonstration purposes */
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  input[type="text"], input[type="number"], select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #45a049;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Restaurant Table Booking</h2>
+  <form id="bookingForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" required>
+
+    <label for="phone">Phone:</label>
+    <input type="text" id="phone" name="phone" required>
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required>
+
+    <label for="time">Time:</label>
+    <input type="time" id="time" name="time" required>
+
+    <label for="guests">Number of Guests:</label>
+    <input type="number" id="guests" name="guests" min="1" required>
+
+    <button type="submit">Book Table</button>
+    <button type="button" id="cancelButton">Cancel Reservation</button>
+  </form>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const bookingForm = document.getElementById('bookingForm');
+  const cancelButton = document.getElementById('cancelButton');
+
+  bookingForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Get form data
+    const formData = new FormData(bookingForm);
+    const bookingDetails = {};
+    formData.forEach((value, key) => {
+      bookingDetails[key] = value;
+    });
+
+    // Simulate sending booking details to backend (not included in this example)
+    console.log('Booking details:', bookingDetails);
+
+    // Redirect to confirmation page (not included in this example)
+    // window.location.href = 'confirmation.html';
+    alert('Table booked successfully!');
+  });
+
+  cancelButton.addEventListener('click', function() {
+    // Simulate cancellation (not included in this example)
+    // Send cancellation request to backend
+    // Update UI accordingly
+    alert('Reservation cancelled!');
+  });
+});
+</script>
+
+</body>
+</html>

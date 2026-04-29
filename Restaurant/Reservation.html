@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="RestaurantTableBooking.css">
+<title>Restaurant Table Booking</title>
+<style>
+  /* Styles for demonstration purposes */
+  .container {
+    height:600px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    
+  }
+  label {
+    display: flex;
+    justify-content: flex-start;
+    /* margin-bottom: 10px; */
+    color:var(--gold-crayola);
+  }
+  input[type="text"], input[type="number"], input[type="email"],select {
+    width: 100%;
+    /* padding: 10px; */
+    margin-bottom: 15px;
+    border: 1px solid var(--gold-crayola);
+    border-radius: 5px;
+    /* border-bottom: 2px solid var(--gold-crayola); */
+    margin-top: 8px;
+    margin-bottom: 6px;
+  }
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    /* justify-self: center; */
+    margin-left:29%;
+  }
+  button:hover {
+    background-color: #45a049;
+  }
+  .TXT{
+    color:white;
+  }
+</style>
+</head>
+<body style="overflow-y: hidden;">
+<div style="background-image: url('/Images2/Hero-bg.jpg'); height:100vh; display:flex; justify-content: center;">
+<div class="container">
+  <h1>Book your table with us</h1>
+  <br>
+  <form id="bookingForm">
+    <label for="name"><h2>Name:</h2></label>
+    <input type="text" id="name" name="name" class="TXT" required>
+
+    <label for="email"><h2>Email</h2></label>
+    <input type="email" id="email" name="email" class="TXT" required>
+
+    <label for="phone"><h2>Phone:</h2></label>
+    <input type="number" id="phone" name="phone" class="TXT" required>
+
+    <label for="date"><h2>Date:</h2></label>
+    <input type="date" id="date" name="date" class="TXT" required style="border: 1px solid var(--gold-crayola); width: 400px;height: 35px;text-align: center;outline: none; margin-top: 8px;
+    margin-bottom: 6px;">
+
+    <label for="time"><h2>Time:</h2></label>
+    <input type="time" id="time" name="time" class="TXT" required style="border: 1px solid var(--gold-crayola); width: 400px;height: 35px;text-align: center;outline: none;margin-top: 8px;
+    margin-bottom: 6px;">
+
+    <label for="guests"><h2>Number of Guests:</h2></label>
+    <input type="number" id="guests" name="guests" class="TXT" min="1" required>
+
+    <button type="submit" style="margin-top:30px; align-self: center; justify-self: center;">Book Table</button>
+    <!-- <button type="button" id="cancelButton">Cancel Reservation</button> -->
+  </form>
+</div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const bookingForm = document.getElementById('bookingForm');
+
+  bookingForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Get form data
+    const formData = new FormData(bookingForm);
+    const bookingDetails = {};
+    formData.forEach((value, key) => {
+      bookingDetails[key] = value;
+    });
+
+    // Simulate checking availability (not included in this example)
+    const isAvailable = checkAvailability(bookingDetails.date, bookingDetails.time);
+
+    if (isAvailable) {
+      // Table is available, proceed with booking
+    //   alert('Table is available! Proceed with booking.');
+      // Simulate sending booking details to backend (not included in this example)
+      console.log('Booking details:', bookingDetails);
+      window.location.href = 'confirmation.html';
+      // Redirect to confirmation page (not included in this example)
+      // window.location.href = 'confirmation.html';
+    } else {
+      // Table is not available at the booked time slot
+      alert('Sorry, the table is not available at the selected time slot. Please choose a different time.');
+    }
+  });
+
+  function checkAvailability(date, time) {
+    // Simulate checking availability (not included in this example)
+    // You can implement your own logic to check availability
+    // This function should return true if the table is available, false otherwise
+    // For demonstration purposes, let's assume all time slots are available
+    return true;
+  }
+});
+</script>
+
+</body>
+</html>

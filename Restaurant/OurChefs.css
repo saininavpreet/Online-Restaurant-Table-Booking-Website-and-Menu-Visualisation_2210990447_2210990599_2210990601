@@ -1,0 +1,116 @@
+/* General Styles */
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #2c2929;
+    color: #333;
+    background-image: url('https://minibackground.com/wp-content/uploads/2020/01/Pivot-plaster.jpg');
+    background-size:150%; /* Ensure the background image covers the entire element */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-position: center;
+}
+
+header {
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-family: 'Merriweather', serif;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.chefs-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch; /* Ensure all items stretch to the same height */
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.chef-profile {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    max-width: 45%;
+    flex: 1 1 calc(50% - 2rem);
+    margin: 1rem;
+    transition: transform 1.5s ease-in-out, box-shadow 1.5s ease-in-out;
+    min-height: 350px; /* Set a minimum height for uniformity */
+}
+
+.chef-profile:hover {
+    animation: popUp 1.5s forwards; /* Trigger pop-up animation on hover */
+}
+
+.chef-photo {
+    width: 100%;
+}
+
+.chef-photo img {
+    width: 100%;
+    height: 450px; /* Set a specific height for the image */
+    object-fit: cover; /* Ensures the image covers the div without stretching */
+    border-radius: 15px 15px 0 0;
+}
+
+.chef-info {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    flex: 1; /* Ensures the content area grows to fill the available space */
+}
+
+.chef-info h2 {
+    margin-top: 0;
+    font-size: 2rem;
+    color: #343a40;
+}
+
+.chef-info p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Animations */
+@keyframes popUp {
+    0% {
+        transform: scale(1); /* Start at normal size */
+    }
+    50% {
+        transform: scale(1.05); /* Slightly larger */
+    }
+    100% {
+        transform: scale(1); /* Return to normal size */
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .chef-profile {
+        flex: 1 1 100%;
+    }
+    
+    .chef-photo img {
+        border-radius: 15px 15px 0 0;
+    }
+}
